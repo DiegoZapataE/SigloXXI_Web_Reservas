@@ -23,7 +23,8 @@
         </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Siglo XXI</title>
+        <title>Siglo XXI Reservas</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="icono/favicon-32x32.png">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -107,7 +108,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-8">
-                                <a href="/SigloXXI_Web/reset_password.jsp">¿Olvidaste tu contraseña?</a>
+                                <a href="/SigloXXI_Web_Reservas/reset_password.jsp">¿Olvidaste tu contraseña?</a>
                             </div>
                             <div class="col-xs-4">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar </button>
@@ -126,11 +127,18 @@
                             </div>
                         </div>
                 <!--- Si no supera la validación, se indicará a través de un mensaje --->
-                <%     
+                <%
                     if (request.getAttribute("Error") != (null) && (Boolean)request.getAttribute("Error") == true ){
                         out.print("<div style='text-align: center;'>"
                                 + "</br>"
                                 + "<p style='color: red'> Correo o contraseña incorrectos. </p>"
+                                + "</div>"
+                        );
+                    }
+                    if (request.getAttribute("ErrorInvitado") != (null) && (Boolean)request.getAttribute("ErrorInvitado") == true ){
+                        out.print("<div style='text-align: center;'>"
+                                + "</br>"
+                                + "<p style='color: red'> Ingreso denegado. Los datos corresponden a una cuenta de invitado. </p>"
                                 + "</div>"
                         );
                     }

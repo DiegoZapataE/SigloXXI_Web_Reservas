@@ -17,6 +17,7 @@
 <html lang="es">
     <head>
         <title>Siglo XXI</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="icono/favicon-32x32.png">
         <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.10/css/AdminLTE.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/flat/blue.css  ">

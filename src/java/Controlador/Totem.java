@@ -33,6 +33,7 @@ public class Totem extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try (PrintWriter out = response.getWriter()) {
         response.setContentType("text/html;charset=UTF-8");
         
 //Inicializamos y definimos las variables a utilizar
@@ -48,9 +49,10 @@ public class Totem extends HttpServlet {
         boolean error = true;
         request.setAttribute("Error", error);
         response.sendRedirect("totem.jsp");
-        
-        
+    }catch(Exception e){
+            e.printStackTrace();
     }
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

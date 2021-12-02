@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import Modelo.BoletasDAO;
 import Modelo.Cliente;
 import Modelo.ClienteDAO;
+import Modelo.MesaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,33 +38,44 @@ public class Ingresar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=ISO-8859-1");
-        
-        //Recuperar datos ingresados del cliente
-            String email = request.getParameter("email").toLowerCase();
+        try{
+            //Recuperar datos ingresados del cliente
+            String email = request.getParameter("email");
             String pass = sha256Hex(request.getParameter("password"));
             ClienteDAO cliDAO = new ClienteDAO();
+            MesaDAO mDAO = new MesaDAO();
+            BoletasDAO bDAO = new BoletasDAO();
             //Validar si los datos son correctos
             if (cliDAO.validarCliente(email, pass)) {
-                HttpSession session = request.getSession(true); // reusar
-                //Setear atributos a la sesión
-                Cliente cli = cliDAO.traerCliente(email);
-                session.setAttribute("rut", (int)cli.getRut_cliente());
-                session.setAttribute("dv", String.valueOf(cli.getDigito_verificador_cliente()));
-                session.setAttribute("password", String.valueOf(cli.getClave_cliente()));
-                session.setAttribute("nombre", String.valueOf(cli.getNombre_cliente()));
-                session.setAttribute("papellido", String.valueOf(cli.getPapellido_cliente()));
-                session.setAttribute("sapellido", String.valueOf(cli.getSapellido_cliente()));
-                session.setAttribute("telefono", (int)cli.getTelefono_cliente());
-                session.setAttribute("direccion", String.valueOf(cli.getDireccion_cliente()));
-                session.setAttribute("email", String.valueOf(cli.getEmail_cliente()));
-                session.setAttribute("emailLogin", String.valueOf(cli.getEmail_cliente()));
-                
-                request.getRequestDispatcher("Resv?accion=ListarReservas").forward(request, response);
-            } else {    
+                if(cliDAO.traerCliente(email).getRut_cliente() > mDAO.traerCantidadMesas()){
+                    HttpSession session = request.getSession(true); // reusar
+                    //Setear atributos a la sesión
+                    Cliente cli = cliDAO.traerCliente(email);
+                    session.setAttribute("rut", (int)cli.getRut_cliente());
+                    session.setAttribute("dv", String.valueOf(cli.getDigito_verificador_cliente()));
+                    session.setAttribute("password", String.valueOf(cli.getClave_cliente()));
+                    session.setAttribute("nombre", String.valueOf(cli.getNombre_cliente()));
+                    session.setAttribute("papellido", String.valueOf(cli.getPapellido_cliente()));
+                    session.setAttribute("sapellido", String.valueOf(cli.getSapellido_cliente()));
+                    session.setAttribute("telefono", (int)cli.getTelefono_cliente());
+                    session.setAttribute("direccion", String.valueOf(cli.getDireccion_cliente()));
+                    session.setAttribute("email", String.valueOf(cli.getEmail_cliente()));
+                    session.setAttribute("emailLogin", String.valueOf(cli.getEmail_cliente()));
+                    request.getRequestDispatcher("Resv?accion=ListarReservas").forward(request, response);
+                }
+                else{
+                    boolean errorInvitado = true;
+                    request.setAttribute("ErrorInvitado", errorInvitado);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            } else {
                 boolean error = true;
                 request.setAttribute("Error", error);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

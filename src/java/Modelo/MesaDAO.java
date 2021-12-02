@@ -69,4 +69,23 @@ public class MesaDAO {
         }
         return m;
     }
+    public int traerCantidadMesas () {
+        Connection con = c.conectar();
+        int cantidad = 0;
+        try {
+            con=c.conectar();
+            CallableStatement cstmt = con.prepareCall("{? = call PKG_MESAS_WEB.BUSCAR_CANT_MESAS()}");
+            cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            cstmt.execute();
+            rs = (ResultSet)cstmt.getObject(1);
+            while (rs.next()) {
+                cantidad = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }finally{
+            c.cerrarConexion(con);
+        }
+        return cantidad;
+    }
 }

@@ -13,6 +13,7 @@ import Modelo.EmailDAO;
 import Modelo.HorarioReserva;
 import Modelo.HorarioReservaDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -69,6 +70,7 @@ public class Resv extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try (PrintWriter out = response.getWriter()) {
         processRequest(request, response);
         String accion=request.getParameter("accion");
         HttpSession session = request.getSession(true); // reusar
@@ -199,6 +201,9 @@ public class Resv extends HttpServlet {
                 break;
             default:
                 throw new AssertionError();
+        }
+    }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

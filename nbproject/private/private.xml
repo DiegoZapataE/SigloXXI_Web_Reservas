@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/totem.jsp</file>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/reset_password.jsp</file>
-            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/registrarC.jsp</file>
-            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/includes/navbarReservas.jsp</file>
+            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/logout.jsp</file>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/index.jsp</file>
+            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/registrarC.jsp</file>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/reservar.jsp</file>
-            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/includes/navbarReservar2.jsp</file>
-            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/includes/navbar.jsp</file>
+            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/src/java/Modelo/MesaDAO.java</file>
+            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/src/java/Controlador/CambiarPass.java</file>
+            <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/src/java/Modelo/BoletasDAO.java</file>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/modificarCliente.jsp</file>
             <file>file:/C:/Users/diego/Desktop/SigloXXI_Web_Reservas/web/panelCliente.jsp</file>
         </group>
