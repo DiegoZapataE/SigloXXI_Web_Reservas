@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import Modelo.BoletasDAO;
 import Modelo.Cliente;
 import Modelo.ClienteDAO;
 import Modelo.MesaDAO;
@@ -44,7 +43,6 @@ public class Ingresar extends HttpServlet {
             String pass = sha256Hex(request.getParameter("password"));
             ClienteDAO cliDAO = new ClienteDAO();
             MesaDAO mDAO = new MesaDAO();
-            BoletasDAO bDAO = new BoletasDAO();
             //Validar si los datos son correctos
             if (cliDAO.validarCliente(email, pass)) {
                 if(cliDAO.traerCliente(email).getRut_cliente() > mDAO.traerCantidadMesas()){

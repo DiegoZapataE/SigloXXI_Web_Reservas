@@ -69,7 +69,7 @@
                 </div>
                 <div class="login-box-body">
                     <p class="login-box-msg">Obtener mesa en pantalla</p>
-                    <form role="form" action="Totem" method="POST" id="formulario">
+                    <form role="form" action="Totem" method="POST" id="form">
                         <div class="form-group has-feedback">
                             <input class="form-control" type="text" name="rutCliente" placeholder="Rut" oninput="checkRut(this)">
                         </div>
@@ -80,6 +80,15 @@
                         </div>
                     </form>
                 </div>
+                <%     
+                            if (request.getAttribute("ErrorTotem") != (null) && (Boolean)request.getAttribute("ErrorTotem") == true ){
+                                out.print("<div style='text-align: center;'>"
+                                        + "</br>"
+                                        + "<p style='color: red'> Tiene que llenar el campo de rut. </p>"
+                                        + "</div>"
+                                );
+                            }
+                        %>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

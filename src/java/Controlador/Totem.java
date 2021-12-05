@@ -47,7 +47,7 @@ public class Totem extends HttpServlet {
         cliDAO.crearSolicitudMesa(rut);
 
         boolean error = true;
-        request.setAttribute("Error", error);
+        request.setAttribute("ErrorTotem", error);
         response.sendRedirect("totem.jsp");
     }catch(Exception e){
             e.printStackTrace();
